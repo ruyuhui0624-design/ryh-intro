@@ -114,6 +114,35 @@ ryh-intro/
 
 用官方 WASM 版 rollup 代替原生版，功能一致、构建稍慢。如果你的机器没有这个限制，想换回原生版：删掉 `overrides`、删掉 `package-lock.json` 和 `node_modules` 后重新 `npm install` 即可。
 
+## 部署到 GitHub Pages
+
+仓库分两条分支：
+
+- `main`：源码（`dist`、`node_modules`、`预览版` 均被 `.gitignore` 排除）
+- `gh-pages`：只放 `npm run build` 的打包产物 + `.nojekyll`，GitHub Pages 直接发布这条分支
+
+首次发布：
+
+```bash
+git remote add origin https://github.com/<用户名>/ryh-intro.git
+git push -u origin main
+```
+
+`gh-pages` 分支由 `deploy.ps1` 自动生成并推送（脚本会 `npm run build` → 同步 `dist/` 到 `../ryh-intro-deploy` → 提交 → `git push origin gh-pages --force`）。
+
+之后每次更新内容，只要在项目根目录执行：
+
+```powershell
+.\deploy.ps1
+```
+
+还有两件只在 GitHub 网页上做一次的事：
+
+1. 仓库 **Settings → Pages**，Source 选 **Deploy from a branch**，Branch 选 `gh-pages` / `(root)`，保存。
+2. 等 1～2 分钟，访问 `https://<用户名>.github.io/ryh-intro/`。
+
+> 因为 `vite.config.ts` 里是 `base: './'`，放在 `/<仓库名>/` 子路径下也能正常加载资源，不用改成绝对路径。
+
 ## 部署
 
 - **Vercel / Netlify**：导入仓库，构建命令 `npm run build`，产物目录 `dist`。
