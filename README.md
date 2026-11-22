@@ -121,12 +121,11 @@ ryh-intro/
 - `main`：源码（`dist`、`node_modules`、`预览版` 均被 `.gitignore` 排除）
 - `gh-pages`：只放 `npm run build` 的打包产物 + `.nojekyll`，GitHub Pages 直接发布这条分支
 
-首次发布：
+已上线（2026-11-23）：
 
-```bash
-git remote add origin https://github.com/<用户名>/ryh-intro.git
-git push -u origin main
-```
+- 仓库：<https://github.com/ruyuhui0624-design/ryh-intro>
+- 线上地址：<https://ruyuhui0624-design.github.io/ryh-intro/>
+- Pages 配置：Source = Deploy from a branch，Branch = `gh-pages` / `/ (root)`
 
 `gh-pages` 分支由 `deploy.ps1` 自动生成并推送（脚本会 `npm run build` → 同步 `dist/` 到 `../ryh-intro-deploy` → 提交 → `git push origin gh-pages --force`）。
 
@@ -136,10 +135,7 @@ git push -u origin main
 .\deploy.ps1
 ```
 
-还有两件只在 GitHub 网页上做一次的事：
-
-1. 仓库 **Settings → Pages**，Source 选 **Deploy from a branch**，Branch 选 `gh-pages` / `(root)`，保存。
-2. 等 1～2 分钟，访问 `https://<用户名>.github.io/ryh-intro/`。
+脚本推完约 1 分钟，`gh api repos/ruyuhui0624-design/ryh-intro/pages --jq .status` 变成 `built` 后刷新线上地址即可看到更新。
 
 > 因为 `vite.config.ts` 里是 `base: './'`，放在 `/<仓库名>/` 子路径下也能正常加载资源，不用改成绝对路径。
 
