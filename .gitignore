@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+*.log
+
+# 本地快捷预览副本与大图截图（不进仓库）
+预览版/
+preview/
+*.zip

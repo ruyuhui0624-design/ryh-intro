@@ -1,0 +1,121 @@
+/* ===== 字体：Google Font Kanit 300-900 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* 全局重置 */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    background-color: #0c0c0c;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #0c0c0c;
+    color: #d7e2ea;
+    font-family: 'Kanit', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+      system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  #root {
+    min-height: 100%;
+    background-color: #0c0c0c;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ===== 外层主容器：透明，让底层星空透出来 ===== */
+.app-shell {
+  position: relative;
+  background-color: transparent;
+  overflow-x: clip;
+}
+
+/* ===== Hello 标题：竖向渐变文字 ===== */
+.hello-heading {
+  background-image: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ===== 章节标题：clamp 流体字号 ===== */
+.hero-heading {
+  font-size: clamp(2.75rem, 9vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #d7e2ea;
+}
+
+/* ===== 粘性堆叠卡片定位 =====
+   sticky top-24 (6rem) / md:top-32 (8rem)，再叠加每张 index*28px 的 top 偏移 */
+.stack-card {
+  --stack-offset: 0px;
+  top: calc(6rem + var(--stack-offset));
+}
+
+@media (min-width: 768px) {
+  .stack-card {
+    top: calc(8rem + var(--stack-offset));
+  }
+}
+
+/* 横向滚动行开启硬件加速 */
+.marquee-row {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* 滚动条（可选美化，不影响功能） */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0c0c;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row {
+    will-change: auto;
+  }
+}
