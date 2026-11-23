@@ -1,7 +1,18 @@
 # RYH-Intro · 个人简介作品集落地页
 
-深色主题的单页作品集：首屏大标题 → 图片跑马灯 → 关于我 → 粘性堆叠项目卡片。
+深色主题的单页作品集：首屏大标题 → 图片跑马灯 → 关于我 → 经历时间线 → 粘性堆叠项目卡片。
 
+## 内容口径（2026-11-23 按简历更新）
+
+文案以 `src/data/content.ts` 为唯一来源，均按简历（《产品经理-茹禹辉》）对齐：
+
+- 首屏小字：`Vision Model PM · Beijing` / `Baidu · Feed Content Quality`
+- 关于我：城大计算机硕士 → 百度 Feed 内容质量多模态 → 「把模型好不好拆成评测标准，再变成数据策略」
+- 经历时间线（6 条）：百度 2026.01–至今 · 平安 2023.07–2024.04 · 网易互娱实习 2025.05–2025.08 · 金山实习 2025.02–2025.05 · 城大 2024.09–2025.10 · 北交 2018.09–2022.06
+- 4 张项目卡：Caption Model / AI Video Call / Data Platform / Code Quality AI（卡片副标题写项目一句话）
+- 联系方式：`ruyuhui0624@163.com`
+
+图片口径：12 张项目封面为深色抽象风格生成图（非真实截图，可按同名文件替换）；`portrait.jpg` 由简历证件照抠图后合成 3:4 深炭底。
 ## 技术栈
 
 - React 18.3.1 + TypeScript
@@ -32,12 +43,12 @@ npm run preview  # 预览打包结果
 
 ```
 ryh-intro/
-├── index.html                 # 页面标题 RYH-Intro、字体预连接
-├── public/images/             # 33 张占位图（21 张跑马灯 + 12 张项目图 + 1 张人像）
+├── index.html                 # 页面标题「RYH · 茹禹辉 | 视觉模型策略产品经理」、字体预连接
+├── public/images/             # 34 张图（21 张跑马灯 + 12 张项目封面 + 1 张人像）
 ├── src/
 │   ├── index.css              # 字体、全局重置、.hello-heading / .hero-heading / .stack-card
-│   ├── App.tsx                # 外层容器（背景 #0C0C0C + overflow-x: clip）+ 4 个章节
-│   ├── data/content.ts        # ★ 图片清单、项目数据、联系邮箱（改这里）
+│   ├── App.tsx                # 外层容器（背景 #0C0C0C + overflow-x: clip）+ 5 个章节
+│   ├── data/content.ts        # ★ 全部文案：heroTagline / aboutText / timeline / projects / 联系方式
 │   └── components/
 │       ├── ContactButton.tsx  # 多色渐变药丸按钮
 │       ├── FadeIn.tsx         # whileInView 入场（once、margin 50px）
@@ -45,6 +56,7 @@ ryh-intro/
 │       ├── HelloSection.tsx
 │       ├── MarqueeSection.tsx
 │       ├── AboutSection.tsx
+│       ├── ExperienceSection.tsx  # 经历时间线（work / intern / edu）
 │       ├── ProjectsSection.tsx
 │       ├── StarfieldBackground.tsx  # Three.js 星云背景（fixed 最底层）
 │       ├── ClothWarp.tsx           # 鼠标按压布料变形（包裹整页内容）
@@ -85,7 +97,7 @@ ryh-intro/
 
 
 1. **文案**
-   - `AboutSection.tsx` → `text="自我介绍，之后再替换"`
+   - `src/data/content.ts` 的 `aboutText`（关于我正文）、`heroTagline`（首屏左下两行小字）
    - 首屏标题在 `HelloSection.tsx` 的 `h1`（`RYH` + `个人简介`，后半段 `0.82em` 是为了与 RYH 视觉等重、避免裁字）
    - 首屏左下角小字、导航文案在 `HelloSection.tsx` 顶部
 2. **图片**
@@ -93,8 +105,8 @@ ryh-intro/
    - 跑马灯：`marquee-01.jpg` ~ `marquee-21.jpg`（第 1 行 1-11，第 2 行 12-21，卡片 420×270，建议出 2x 图 840×540）
    - 项目图：`project-01/02/03/04-a|b|c.jpg`（a、b 放左侧 40% 堆叠，c 放右侧 60% 高图）
    - 人像：`portrait.jpg`（3:4 竖图）
-3. **项目数据**：`src/data/content.ts` 的 `projects`，改 `name`、`index` 和图片即可。
-4. **联系方式**：`src/data/content.ts` 里的 `contactHref`（默认 `mailto:hello@ryh.example.com`）。
+3. **项目数据**：`src/data/content.ts` 的 `projects`，改 `name`、`subtitle`、`index` 和图片即可；`timeline` 数组是经历时间线（period / org / role / kind / note）。
+4. **联系方式**：`src/data/content.ts` 里的 `contactHref` / `contactEmail`（当前 `ruyuhui0624@163.com`）。
 
 ## 动效参数（按需求原样保留）
 
