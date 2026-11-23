@@ -1,6 +1,6 @@
 import FadeIn from './FadeIn'
 import ContactButton from './ContactButton'
-import { contactHref, heroTagline, portraitImage } from '../data/content'
+import { contactHref, heroTagline } from '../data/content'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -40,7 +40,7 @@ export default function HelloSection() {
         </nav>
       </FadeIn>
 
-      {/* 主标题 + 人像 */}
+      {/* 主标题 */}
       <div className="relative flex min-h-0 flex-1 items-center">
         <FadeIn delay={0.15} y={40} duration={1.1} className="w-full">
           <div className="w-full overflow-hidden">
@@ -50,21 +50,6 @@ export default function HelloSection() {
               <span className="text-[0.82em] tracking-[-0.02em]">个人简介</span>
             </h1>
           </div>
-        </FadeIn>
-
-        {/* 人像：延迟 0.6，y30 */}
-        <FadeIn
-          delay={0.6}
-          y={30}
-          duration={1}
-          className="absolute bottom-0 right-0 z-20 w-[32vw] max-w-[170px] sm:w-[26vw] sm:max-w-[200px] md:w-[15vw] md:max-w-[205px] lg:w-[13vw]"
-        >
-          <img
-            src={portraitImage}
-            alt="RYH 人像"
-            loading="eager"
-            className="aspect-[3/4] w-full rounded-[22px] border border-white/10 bg-[#141414] object-cover grayscale transition-[filter,transform] duration-500 ease-out hover:grayscale-0 md:rounded-[28px]"
-          />
         </FadeIn>
       </div>
 

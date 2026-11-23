@@ -12,7 +12,7 @@
 - 4 张项目卡：Caption Model / AI Video Call / Data Platform / Code Quality AI（卡片副标题写项目一句话）
 - 联系方式：`ruyuhui0624@163.com`
 
-图片口径：12 张项目封面为深色抽象风格生成图（非真实截图，可按同名文件替换）；`portrait.jpg` 由简历证件照抠图后合成 3:4 深炭底。
+图片口径：12 张项目封面为深色抽象风格生成图（非真实截图，可按同名文件替换）；`portrait.jpg` 由简历证件照抠图后合成 3:4 深炭底（2026-11-23 已按要求从首屏移除，文件保留在 `public/images/`，想恢复时在 `HelloSection.tsx` 里加回即可）。
 ## 技术栈
 
 - React 18.3.1 + TypeScript
@@ -44,7 +44,7 @@ npm run preview  # 预览打包结果
 ```
 ryh-intro/
 ├── index.html                 # 页面标题「RYH · 茹禹辉 | 视觉模型策略产品经理」、字体预连接
-├── public/images/             # 34 张图（21 张跑马灯 + 12 张项目封面 + 1 张人像）
+├── public/images/             # 34 张图（21 张跑马灯 + 12 张项目封面 + 1 张人像，人像当前未在首屏展示，文件保留）
 ├── src/
 │   ├── index.css              # 字体、全局重置、.hello-heading / .hero-heading / .stack-card
 │   ├── App.tsx                # 外层容器（背景 #0C0C0C + overflow-x: clip）+ 5 个章节
