@@ -4,6 +4,7 @@ import ClothWarp from './components/ClothWarp'
 import HelloSection from './components/HelloSection'
 import MarqueeSection from './components/MarqueeSection'
 import AboutSection from './components/AboutSection'
+import ExperienceSection from './components/ExperienceSection'
 import ProjectsSection from './components/ProjectsSection'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           <HelloSection />
           <MarqueeSection />
           <AboutSection />
+          <ExperienceSection />
           <ProjectsSection />
         </main>
       </ClothWarp>

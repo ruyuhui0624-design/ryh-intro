@@ -1,7 +1,7 @@
 import FadeIn from './FadeIn'
 import AnimatedText from './AnimatedText'
 import ContactButton from './ContactButton'
-import { contactHref } from '../data/content'
+import { aboutText, contactEmail, contactHref } from '../data/content'
 
 export default function AboutSection() {
   return (
@@ -17,13 +17,19 @@ export default function AboutSection() {
       {/* 正文 + 联系按钮，区块间距统一由 gap 控制 */}
       <div className="mt-10 flex w-full flex-col items-center gap-8 sm:mt-12 sm:gap-10 md:mt-16 md:gap-12">
         <AnimatedText
-          text="自我介绍，之后再替换"
+          text={aboutText}
           className="mx-auto max-w-[560px] text-center text-[15px] font-light leading-[1.95] tracking-wide text-[#D7E2EA] sm:text-base md:text-lg lg:text-xl"
         />
 
-        <div id="contact" className="scroll-mt-24">
+        <div id="contact" className="flex flex-col items-center gap-5 scroll-mt-24">
           <FadeIn delay={0.1} y={16} duration={0.9}>
             <ContactButton href={contactHref} />
+          </FadeIn>
+
+          <FadeIn delay={0.2} y={12} duration={0.9}>
+            <p className="text-[10px] font-light uppercase tracking-[0.24em] text-[#D7E2EA]/45 sm:text-[11px]">
+              {contactEmail}
+            </p>
           </FadeIn>
         </div>
       </div>

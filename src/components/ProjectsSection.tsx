@@ -55,6 +55,11 @@ function StickyCard({ project, index, total, progress }: StickyCardProps) {
         />
       </div>
 
+      {/* 项目一行说明 */}
+      <p className="mt-2 max-w-[92%] text-[10px] font-light uppercase leading-relaxed tracking-[0.14em] text-[#D7E2EA]/45 sm:mt-3 sm:text-[11px] md:text-xs">
+        {project.subtitle}
+      </p>
+
       {/* 图片区：左 40%（两张堆叠） / 右 60%（一张高图） */}
       <div className="mt-4 grid min-h-0 flex-1 grid-cols-[40%_60%] gap-3 sm:mt-5 md:mt-6 md:gap-4">
         <div className="order-1 flex min-h-0 flex-col gap-3 md:gap-4">

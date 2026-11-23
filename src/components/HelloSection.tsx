@@ -1,9 +1,10 @@
 import FadeIn from './FadeIn'
 import ContactButton from './ContactButton'
-import { contactHref, portraitImage } from '../data/content'
+import { contactHref, heroTagline, portraitImage } from '../data/content'
 
 const navLinks = [
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -71,9 +72,9 @@ export default function HelloSection() {
       <div className="relative z-30 mt-4 flex items-end justify-between gap-4 sm:mt-6 sm:gap-6">
         <FadeIn delay={0.35} y={20} duration={0.9} className="min-w-0">
           <p className="max-w-[52vw] text-[9px] font-light uppercase leading-[1.7] tracking-[0.2em] text-[#D7E2EA] sm:max-w-none sm:text-[10px] sm:tracking-[0.28em] md:text-xs">
-            AI Product · Beijing
+            {heroTagline[0]}
             <br />
-            Open to new roles
+            {heroTagline[1]}
           </p>
         </FadeIn>
 
