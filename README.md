@@ -35,7 +35,7 @@ npm run preview  # 预览打包结果
 
 ### 只想快速看一眼效果
 
-双击 **`预览版/index.html`** 就能打开（JS/CSS 已内联，`images` 文件夹必须和它放在同一层）。这是单独的预览副本，`npm run build` 不会把它删掉；改了代码后想刷新预览，需要重新生成一次内联版本。
+双击 **`预览版/index.html`** 就能打开（JS/CSS 已内联，`images` 文件夹必须和它放在同一层）。它由 `make-offline-preview.ps1` 生成（把 `dist/` 的 JS/CSS 内联进一个文件 + 同步 `public/images`）；`deploy.ps1` 每次打包后都会自动跑一遍，所以本地的预览版始终等于最新构建，也是线上那一份。
 
 `dist/index.html` 不一样：它引用外部的 ES module 文件，浏览器不允许从 `file://` 加载，所以双击会白屏，要用 `npm run preview` 或部署后再看。
 
@@ -139,7 +139,7 @@ ryh-intro/
 - 线上地址：<https://ruyuhui0624-design.github.io/ryh-intro/>
 - Pages 配置：Source = Deploy from a branch，Branch = `gh-pages` / `/ (root)`
 
-`gh-pages` 分支由 `deploy.ps1` 自动生成并推送（脚本会 `npm run build` → 同步 `dist/` 到 `../ryh-intro-deploy` → 提交 → `git push origin gh-pages --force`）。
+`gh-pages` 分支由 `deploy.ps1` 自动生成并推送，一次跑完 4 步：`npm run build` → 刷新 `预览版/index.html` → 同步 `dist/` 到 `../ryh-intro-deploy` 并提交 → 推 `gh-pages`（force）与 `main`。推送带 6 次自动重试（GitHub 443 常抖动）；`git` 不在 PATH 时会自动找 `D:\Git\cmd\git.exe`。
 
 之后每次更新内容，只要在项目根目录执行：
 
